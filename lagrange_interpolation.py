@@ -1,7 +1,7 @@
 import numpy
 
 
-def interpolate(coordinates):
+def interpolate(coordinates: list[tuple]) -> numpy.polynomial:
     # unpack coordinate pairs
     xs, ys = list(zip(*coordinates))
 
