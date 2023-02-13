@@ -1,5 +1,6 @@
 import lagrange_interpolation
 import numpy
+import random
 
 c1 = [
     (1, 2),
@@ -46,3 +47,7 @@ numpy.testing.assert_allclose(
     [2, 4.1666, -2.5, 0.3333],
     rtol=1e-3
 )
+
+xs = list(range(0, 11))
+ys = list(numpy.random.randint(0, 64, 11))
+lagrange_interpolation.plot(xs, ys)
