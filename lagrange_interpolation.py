@@ -1,10 +1,8 @@
+import matplotlib.pyplot as plt
 import numpy
 
 
-def interpolate(coordinates: list[tuple]) -> numpy.polynomial:
-    # unpack coordinate pairs
-    xs, ys = list(zip(*coordinates))
-
+def interpolate(xs: list[int], ys: list[int]) -> numpy.polynomial:
     # dupe list and remove diagonal
     # https://stackoverflow.com/a/46736275
     #             x1 x2 x3       x2 x3
@@ -46,5 +44,49 @@ def interpolate(coordinates: list[tuple]) -> numpy.polynomial:
     return final_poly
 
 
+def plot(xs: list[int], ys: list[int]):
+    lagrange = interpolate(xs, ys)
+
+    min = numpy.min(xs)
+    max = numpy.max(xs)
+    num_pts = 1000
+    x = numpy.linspace(min, max, num_pts)    
+
+    # reverse order of coefficients and evaluate
+    poly_coefs = lagrange[::-1]
+    y = numpy.polyval(poly_coefs, x)
+
+    plt.plot(x, y, '-r')
+    plt.scatter(xs, ys)
+    plt.show()
+
+
 if __name__ == "__main__":
-    interpolate()
+    c1 = [
+        (1, 2),
+        (3, 2),
+        (4, -1)
+    ]
+
+    c2 = [
+        (0, 7),
+        (1, 5),
+        (2, 3),
+        (3, 8),
+        (4, 9),
+        (5, 2)
+    ]
+
+    c3 = [
+        (0, 2),
+        (1, 4),
+        (2, 3),
+        (3, 1)
+    ]
+
+    xs, ys = list(zip(*c1))
+    plot(xs, ys)
+    xs, ys = list(zip(*c2))
+    plot(xs, ys)
+    xs, ys = list(zip(*c3))
+    plot(xs, ys)

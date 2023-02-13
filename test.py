@@ -23,20 +23,24 @@ c3 = [
     (3, 1)
 ]
 
-p1 = lagrange_interpolation.interpolate(c1)
+
+xs, ys = list(zip(*c1))
+p1 = lagrange_interpolation.interpolate(xs, ys)
 numpy.testing.assert_array_equal(
     p1,
     [-1, 4, -1]
 )
 
-p2 = lagrange_interpolation.interpolate(c2)
+xs, ys = list(zip(*c2))
+p2 = lagrange_interpolation.interpolate(xs, ys)
 numpy.testing.assert_allclose(
     p2,
     [7, 9.8333, -22.1666, 12.9583, -2.8333, 0.2083],
     rtol=1e-3
 )
 
-p3 = lagrange_interpolation.interpolate(c3)
+xs, ys = list(zip(*c3))
+p3 = lagrange_interpolation.interpolate(xs, ys)
 numpy.testing.assert_allclose(
     p3,
     [2, 4.1666, -2.5, 0.3333],
