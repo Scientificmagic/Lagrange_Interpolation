@@ -8,6 +8,8 @@ Given N coordinates points, generates a polynomial of N-1 degree which contains 
 
 **(Falls apart at ~20 points)**
 
+<img src = './images/figure_1.png' width=50%> 
+
 ## Usage
 ### As an import
 ```
